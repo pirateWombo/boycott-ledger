@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-bg: #0e0d0b;
+  --color-panel: #171612;
+  --color-panel-2: #211f1a;
+  --color-line: #2e2b25;
+  --color-ink: #efe8dc;
+  --color-muted: #a39b8c;
+  --color-faint: #6f685c;
+  --color-red: #e24b3a;
+  --color-amber: #e39a2d;
+  --color-green: #3aaa78;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@keyframes scanline {
+  0%,
+  100% {
+    transform: translateY(-7rem);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(7rem);
+    opacity: 0.9;
+  }
+}
+
+.scanline {
+  top: 50%;
+  animation: scanline 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanline {
+    animation: none;
+    top: 50%;
+    opacity: 0.7;
+  }
+}
+
+#reader {
+  width: 100%;
+  height: 100%;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+#reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 0 !important;
+}
+
+#reader__dashboard,
+#reader__header_message,
+#reader img {
+  display: none !important;
+}
+
+#reader__scan_region {
+  min-height: 0 !important;
+}
+
+#qr-shaded-region {
+  border-color: rgb(14 13 11 / 0.45) !important;
+}
